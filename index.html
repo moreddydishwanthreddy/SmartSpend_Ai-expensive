@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartSpend AI | Expense Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">✦</span><div><strong>SmartSpend</strong><small>AI FINANCE</small></div></div>
+    <div class="side-label">WORKSPACE</div>
+    <a class="nav active" href="#overview">▦ <span>Overview</span></a>
+    <a class="nav" href="#transactions">↕ <span>Transactions</span></a>
+    <a class="nav" href="#analytics">▥ <span>Analytics</span></a>
+    <a class="nav" href="#insights">✧ <span>AI Insights</span></a>
+    <div class="sidebar-note"><div class="note-icon">✧</div><b>Small steps add up.</b><p>Build better money habits, one day at a time.</p></div>
+    <div class="sidebar-footer">SMARTSPEND AI · STUDENT PROJECT</div>
+  </aside>
+
+  <main class="main" id="overview">
+    <header class="topbar"><div><p class="eyebrow">PERSONAL FINANCE</p><h1>Good day! <span>👋</span></h1><p class="muted">Here’s your financial snapshot.</p></div><div class="today" id="today"></div></header>
+
+    <section class="stats">
+      <article class="stat-card balance-card"><div class="stat-top"><span>Total balance</span><span class="stat-symbol">◈</span></div><h2 id="total-balance">₹0.00</h2><p>Income minus expenses</p></article>
+      <article class="stat-card"><div class="stat-top"><span>Total income</span><span class="stat-symbol green">↗</span></div><h2 id="total-income">₹0.00</h2><p class="positive">Money received</p></article>
+      <article class="stat-card"><div class="stat-top"><span>Total expenses</span><span class="stat-symbol orange">↘</span></div><h2 id="total-expense">₹0.00</h2><p class="muted">Money spent</p></article>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel" id="transactions">
+        <div class="panel-heading"><div><p class="eyebrow">RECORD ACTIVITY</p><h3>Add a transaction</h3></div><span class="heading-icon">＋</span></div>
+        <form id="transaction-form">
+          <label for="description">Description</label><input id="description" type="text" placeholder="e.g. Lunch with friends" required maxlength="60">
+          <div class="form-row"><div><label for="amount">Amount (₹)</label><input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required></div><div><label for="type">Type</label><select id="type"><option value="expense">Expense</option><option value="income">Income</option></select></div></div>
+          <label for="category">Category</label><select id="category"><option>Food</option><option>Travel</option><option>Shopping</option><option>Education</option><option>Bills</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Other</option></select>
+          <button class="primary-btn" type="submit">＋ Add transaction</button>
+        </form>
+      </section>
+
+      <section class="panel" id="analytics">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR MONEY, VISUALLY</p><h3>Expense breakdown</h3></div><span class="heading-icon">◔</span></div>
+        <div class="chart-wrap"><canvas id="expenseChart"></canvas><p id="chart-empty" class="chart-empty">Your expense chart will appear here after you add transactions.</p></div>
+      </section>
+    </div>
+
+    <section class="panel history-panel">
+      <div class="panel-heading"><div><p class="eyebrow">RECENT ACTIVITY</p><h3>Transaction history</h3></div><span class="count" id="transaction-count">0 records</span></div>
+      <div class="table-scroll"><table><thead><tr><th>DESCRIPTION</th><th>CATEGORY</th><th>TYPE</th><th>DATE</th><th class="right">AMOUNT</th><th></th></tr></thead><tbody id="transaction-list"><tr><td colspan="6" class="empty-row">No transactions yet. Add your first transaction above.</td></tr></tbody></table></div>
+    </section>
+
+    <section class="ai-panel" id="insights"><div class="ai-mark">✧</div><div class="ai-copy"><p class="eyebrow">SMARTSPEND AI</p><h3>Your personal spending assistant</h3><p>Get a simple summary of your spending and practical ideas to plan your budget.</p><div id="ai-result" class="ai-result">Your insights will appear here.</div></div><button id="ai-button" class="ai-btn">Generate insights ✦</button></section>
+    <footer>Made with care for learning · SmartSpend AI</footer>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
